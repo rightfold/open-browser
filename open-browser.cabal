@@ -18,10 +18,14 @@ source-repository head
 
 library
     exposed-modules:        Network.Browser, Web.Browser
-    other-modules:          Web.Browser.Linux, Web.Browser.OSX
+    other-modules:          Web.Browser.Linux,
+                            Web.Browser.OSX
     hs-source-dirs:         lib
     default-language:       Haskell2010
     build-depends:          base >= 4 && < 5, process >= 1 && < 2
+    if os(windows)
+      build-depends:        Win32
+      other-modules:        Web.Browser.Windows
 
 executable example
     main-is:                Main.hs
