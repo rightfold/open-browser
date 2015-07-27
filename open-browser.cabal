@@ -2,7 +2,7 @@ name:                       open-browser
 version:                    0.1.0.0
 synopsis:                   Open a web browser from Haskell.
 description:                Open a web browser from Haskell.
-                            Currently only Linux and OS X is supported.
+                            Currently only Linux and OS X are supported.
 license:                    BSD3
 license-file:               LICENSE
 author:                     rightfold
