@@ -1,21 +1,30 @@
-﻿module Web.Browser.Windows
+﻿{-# LANGUAGE ForeignFunctionInterface #-}
+module Web.Browser.Windows
 ( openBrowserWindows
 ) where
 
-import System.Directory (findExecutable)
-import System.Exit (ExitCode(..))
-import System.Process (system)
+import System.Win32.Types (INT, HANDLE, HINSTANCE, LPCTSTR,
+                           handleToWord, nullPtr, withTString)
 
 openBrowserWindows :: String -> IO Bool
-openBrowserWindows url = do
-  mbCygstart <- findExecutable "cygstart"
-  case mbCygstart of
-       Just cygstart -> openBrowserWith cygstart url
-       Nothing       -> openBrowserWith "start" url
+openBrowserWindows url =
+    withTString "open" $ \openStr ->
+        withTString url $ \urlStr ->
+            exitCodeToBool `fmap` c_ShellExecute nullPtr
+                                                 openStr
+                                                 urlStr
+                                                 nullPtr
+                                                 nullPtr
+                                                 1
+  where exitCodeToBool hinst | handleToWord hinst > 32 = True
+                             | otherwise               = False
 
--- We can't use rawSystem on Windows, since that doesn't pick up the "start"
--- shell built-in.
-openBrowserWith :: FilePath -> String -> IO Bool
-openBrowserWith cmd url = exitCodeToBool `fmap` system (cmd ++ " " ++ url)
-    where exitCodeToBool ExitSuccess     = True
-          exitCodeToBool (ExitFailure _) = False
+-- https://msdn.microsoft.com/en-us/library/windows/desktop/bb762153(v=vs.85).aspx
+foreign import ccall "ShellExecuteW"
+    c_ShellExecute :: HANDLE  -- _In_opt_
+                   -> LPCTSTR -- _In_opt_
+                   -> LPCTSTR -- _In_
+                   -> LPCTSTR -- _In_opt_
+                   -> LPCTSTR -- _In_opt_
+                   -> INT     -- _In_
+                   -> IO (HINSTANCE)
