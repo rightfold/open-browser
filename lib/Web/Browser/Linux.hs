@@ -1,4 +1,4 @@
-module Network.Browser.Linux
+module Web.Browser.Linux
 ( openBrowserLinux
 ) where
 

@@ -1,4 +1,4 @@
-module Network.Browser.OSX
+module Web.Browser.OSX
 ( openBrowserOSX
 ) where
 
