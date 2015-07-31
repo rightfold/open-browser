@@ -17,7 +17,7 @@ source-repository head
     location:               https://github.com/rightfold/open-browser.git
 
 library
-    exposed-modules:        Network.Browser, Web.Browser
+    exposed-modules:        Web.Browser
     other-modules:          Web.Browser.Linux,
                             Web.Browser.OSX
     hs-source-dirs:         lib
