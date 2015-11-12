@@ -1,4 +1,4 @@
-﻿{-# LANGUAGE ForeignFunctionInterface #-}
+{-# LANGUAGE ForeignFunctionInterface #-}
 module Web.Browser.Windows
 ( openBrowserWindows
 ) where
