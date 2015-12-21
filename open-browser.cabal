@@ -6,11 +6,14 @@ description:                Open a web browser from Haskell.
 license:                    BSD3
 license-file:               LICENSE
 author:                     rightfold
+homepage: https://github.com/rightfold/open-browser
 maintainer:                 rightfold@gmail.com
 bug-reports:                https://github.com/rightfold/open-browser/issues
 category:                   Web
 build-type:                 Simple
 cabal-version:              >=1.10
+
+tested-with: GHC >= 7.6
 
 source-repository head
     type:                   git
