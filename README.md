@@ -1,6 +1,8 @@
 # open-browser
 [![Hackage Version](https://img.shields.io/hackage/v/open-browser.svg)](https://img.shields.io/hackage/v/open-browser.svg)
 [![Hackage Deps](https://img.shields.io/hackage-deps/v/open-browser.svg)](http://packdeps.haskellers.com/feed?needle=open-browser)
+[![Build status](https://travis-ci.org/rightfold/open-browser.svg)](https://travis-ci.org/rightfold/open-browser)
+
 - - -
 Haskell package to open a web browser. [See the haddock documentation for more
 information.](http://hackage.haskell.org/package/open-browser)
