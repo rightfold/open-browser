@@ -1,3 +1,4 @@
+{-# LANGUAGE CPP #-}
 {-# LANGUAGE ForeignFunctionInterface #-}
 module Web.Browser.Windows
 ( openBrowserWindows
@@ -20,11 +21,11 @@ openBrowserWindows url =
                              | otherwise               = False
 
 -- https://msdn.microsoft.com/en-us/library/windows/desktop/bb762153(v=vs.85).aspx
-foreign import ccall "ShellExecuteW"
+foreign import WINDOWS_CCONV unsafe "windows.h ShellExecuteW"
     c_ShellExecute :: HANDLE  -- _In_opt_
                    -> LPCTSTR -- _In_opt_
                    -> LPCTSTR -- _In_
                    -> LPCTSTR -- _In_opt_
                    -> LPCTSTR -- _In_opt_
                    -> INT     -- _In_
-                   -> IO (HINSTANCE)
+                   -> IO HINSTANCE

@@ -29,6 +29,10 @@ library
     if os(windows)
       build-depends:        Win32
       other-modules:        Web.Browser.Windows
+      if arch(i386)
+        cpp-options:        "-DWINDOWS_CCONV=stdcall"
+      else
+        cpp-options:        "-DWINDOWS_CCONV=ccall"
 
 executable example
     main-is:                Main.hs
