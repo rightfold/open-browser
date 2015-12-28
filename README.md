@@ -1,5 +1,5 @@
 # open-browser
-[![Hackage Version](https://img.shields.io/hackage/v/open-browser.svg)](https://img.shields.io/hackage/v/open-browser.svg)
+[![Hackage Version](https://img.shields.io/hackage/v/open-browser.svg)](https://hackage.haskell.org/package/open-browser)
 [![Hackage Deps](https://img.shields.io/hackage-deps/v/open-browser.svg)](http://packdeps.haskellers.com/feed?needle=open-browser)
 [![Build status](https://travis-ci.org/rightfold/open-browser.svg)](https://travis-ci.org/rightfold/open-browser)
 
